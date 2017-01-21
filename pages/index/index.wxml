@@ -1,0 +1,38 @@
+
+<!--引入模板-->
+<import src="modal.wxml" />
+
+<!--index.wxml-->
+<view class="container">
+  <swiper autoplay circular indicator-dots>
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="search-wrap g-wrap">
+    <navigator class="search content-wrap" url="url">
+      <icon type="search" size="20"></icon>
+      <text>搜索商品</text>
+    </navigator>
+  </view>
+  <view class="coupon-title content-wrap">
+    <text>发现好券</text>
+  </view>
+  <view class="see-coupon content-wrap">
+    <block wx:for="{{coupons}}">
+      <view class="coupon {{item.isReceived?'received':''}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="couponTapHandler">
+        <text class="coupon-off">¥ {{item.off}}</text>
+        <view>
+          <text class="coupon-type">{{item.isReceived?'已领取':'优惠券'}}</text>
+          <text class="coupon-limit">满{{item.limit}}可用</text>
+        </view>
+        <text class="coupon-merchant text-ellipsis">仅限{{item.merchant}}可使用</text>
+      </view>
+    </block>
+  </view>
+  <view catchtap="modalTapHandler">
+    <template is="modal" data="{{modalContent}}"></template>
+  </view>>
+</view>

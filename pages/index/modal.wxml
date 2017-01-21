@@ -1,0 +1,5 @@
+<template name="modal">
+  <view class="mask" wx:if="{{modalContent}}">
+    <view class="modal text-ellipsis">{{modalContent}}</view>
+  </view>
+</template>

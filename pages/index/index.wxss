@@ -1,0 +1,148 @@
+/**index.wxss**/
+
+page {
+  background-color: #eee;
+}
+
+swiper {
+  width: 100%;
+  height: 240px;
+  position: relative;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+.search-wrap {
+  border-bottom: 1px solid #888;
+}
+
+.search {
+  box-sizing: border-box;
+  margin: 20px auto;
+  background-color: #fff;
+  height: 40px;
+  border-radius: 50rpx;
+  padding: 10px 50rpx;
+}
+
+.search icon {
+  float: left;
+}
+
+.search text {
+  float: left;
+  margin-left: 10px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.see-coupon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.coupon-title {
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.coupon {
+  color: #e64340;
+  box-sizing: border-box;
+  position: relative;
+  margin: 10px 0;
+  width: 340rpx;
+  height: 100px;
+  border: 1px solid #e64340;
+  border-radius: 10px;
+}
+
+.coupon.received {
+  color: rgba(230, 67, 64, 0.7);
+  border-color: rgba(230, 67, 64, 0.7);
+}
+
+.coupon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.coupon view {
+  position: absolute;
+  top: 14px;
+  right: 32rpx;
+  width: 128rpx;
+}
+
+.coupon-off {
+  font-weight: bold;
+  font-size: 20px;
+  position: absolute;
+  top: 22px;
+  left: 40rpx;
+}
+
+.coupon-type {
+  float: left;
+  color: #fff;
+  background-color: #e64340;
+  height: 14px;
+  line-height: 14px;
+  padding-right: 2px;
+  margin-left: 5px;
+  margin-bottom: 12px;
+}
+
+.coupon-type::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '.';
+  color: transparent;
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  border-top: 7.5px solid transparent;
+  border-right: 6px solid #e64340;
+  border-bottom: 7.5px solid transparent;
+}
+
+.coupon-limit {
+  float: left;
+}
+
+.coupon-merchant {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 30rpx;
+  color: #fff;
+  background-color: #e64340;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.coupon.received .coupon-merchant {
+  background-color: rgba(230, 67, 64, 0.7);
+}
+
+.coupon.received .coupon-type {
+  background-color: rgba(230, 67, 64, 0.7);
+}
+
+.coupon.received .coupon-type::before {
+  border-right: 6px solid rgba(230, 67, 64, 0.7);
+}
+
+.coupon-received {
+  position: absolute;
+  top: 18px;
+  right: 10rpx;
+}
