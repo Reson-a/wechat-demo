@@ -1,6 +1,5 @@
 
 <!--引入模板-->
-<import src="modal.wxml" />
 
 <!--index.wxml-->
 <view class="container">
@@ -32,7 +31,4 @@
       </view>
     </block>
   </view>
-  <view catchtap="modalTapHandler">
-    <template is="modal" data="{{modalContent}}"></template>
-  </view>>
 </view>

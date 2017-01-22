@@ -5,8 +5,7 @@ var app = getApp()
 Page({
   data: {
     imgUrls: [],
-    coupons: [],
-    modalContent: ''
+    coupons: []
   },
   onLoad: function () {
     // 获取首页轮播图片列表
@@ -44,15 +43,11 @@ Page({
       this.setData({
         [`coupons[${index}].isReceived`]: true
       })
-      this.setData({
-        modalContent: '领取成功'
+      wx.showToast({
+        title: '领取成功',
+        icon: 'success',
+        mask: true,
       })
-    })
-  },
-  // 
-  modalTapHandler() {
-    this.setData({
-      modalContent: ''
     })
   }
 })

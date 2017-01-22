@@ -1,1 +1,20 @@
 /* pages/order/order.wxss */
+
+.avatar {
+  float: left;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin: 15px 40rpx 15px 50rpx;
+}
+
+.user-info {
+  background-color: #e64340;
+}
+
+.user-info .name {
+  font-size: 20px;
+  float: left;
+  color: #fff;
+  margin-top: 30px;
+}
