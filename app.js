@@ -1,7 +1,10 @@
 const dataService = require('./utils/dataService.js')
 const Promise = require('./utils/bluebird.core.min.js')
+const Event = require('./utils/event.js')
 //app.js
 App({
+  //
+  event: new Event(),
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -26,6 +29,9 @@ App({
     }
   },
   globalData: {
-    userInfo: null
+    // 用户信息
+    userInfo: null,
+    // 优惠券信息
+    coupons: []
   }
 })

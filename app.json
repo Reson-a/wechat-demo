@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/order/order"
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +23,7 @@
         "selectedIconPath": "images/search_1.png"
       },
       {
-        "pagePath": "pages/order/order",
+        "pagePath": "pages/me/me",
         "text": "我的订单",
         "iconPath": "images/order.png",
         "selectedIconPath": "images/order_1.png"

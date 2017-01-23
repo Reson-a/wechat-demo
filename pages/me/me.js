@@ -2,7 +2,36 @@
 const app = getApp()
 Page({
   data: {
-    userInfo: null
+    userInfo: null,
+    itemList: [{
+      title: '全部订单',
+      count: 0,
+      url: '',
+      icon: ''
+    },
+    {
+      title: '待付款',
+      count: 0,
+      url: '',
+      icon: ''
+    }, {
+      title: '待收货',
+      count: 0,
+      url: '',
+      icon: ''
+    },
+    {
+      title: '售后订单',
+      count: 0,
+      url: '',
+      icon: ''
+    },
+    {
+      title: '优惠券',
+      count: 0,
+      url: '',
+      icon: ''
+    }]
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数

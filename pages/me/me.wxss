@@ -18,3 +18,17 @@
   color: #fff;
   margin-top: 30px;
 }
+
+.me-content {
+  background-color: #eee;
+}
+
+.me-item image {
+  width: 20px;
+  height: 20px;
+}
+
+.me-item {
+  background-color: #fff;
+  border-bottom: 1rpx solid #888;
+}

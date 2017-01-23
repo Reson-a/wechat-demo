@@ -1,0 +1,16 @@
+
+<!--pages/order/order.wxml-->
+<view class="g-wrap user-info clearfix">
+  <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+  <text class="name">{{userInfo.nickName}}</text>
+</view>
+<view class="g-wrap">
+  <view class="content-wrap clearfix me-item" wx:for="{{itemList}}">
+    <image class="f-fl" src="{{item.icon}}"></image>
+    <text class="f-fl">{{item.title}}</text>
+    <navigator class="f-fr" url="{{item.url}}">
+      <icon type="download"></icon>
+    </navigator>
+    <text class="f-fr">{{item.count}}</text>
+  </view>
+</view>
