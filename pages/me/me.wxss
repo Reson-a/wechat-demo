@@ -23,12 +23,29 @@
   background-color: #eee;
 }
 
-.me-item image {
-  width: 20px;
-  height: 20px;
-}
-
 .me-item {
   background-color: #fff;
   border-bottom: 1rpx solid #888;
+  padding: 0 25rpx;
+  height: 30px;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.me-item image {
+  width: 20px;
+  height: 20px;
+  margin: 5px 0;
+}
+
+.me-item-title {
+  height: 14px;
+  margin: 8px 12rpx;
+}
+
+.me-item-count {
+  font-weight: bold;
+  height: 14px;
+  margin: 8px 8rpx;
+  color: #e64340;
 }

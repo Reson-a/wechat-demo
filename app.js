@@ -6,10 +6,10 @@ App({
   //
   event: new Event(),
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
+    /* 调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    wx.setStorageSync('logs', logs)*/
   },
   getUserInfo() {
     if (this.globalData.userInfo) {
@@ -31,7 +31,15 @@ App({
   globalData: {
     // 用户信息
     userInfo: null,
+    // 全部订单
+    orders: [],
+    // 待付款
+    notPaid: [],
+    // 待收货
+    notReceived: [],
+    // 售后订单
+    afterSale: [],
     // 优惠券信息
-    coupons: []
+    coupons: [],
   }
 })
