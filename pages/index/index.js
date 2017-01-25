@@ -12,7 +12,6 @@ Page({
   },
   // 页面加载
   onLoad: function () {
-    event.on('getCoupon', this.getCoupon, this)
     // 获取首页轮播图片列表
     dataService.getSwiperUrlList().then((res) => {
       this.setData({
@@ -36,30 +35,25 @@ Page({
         }
       })
     }
+
+    this.initEvent()
   },
   // 页面卸载,必须移除事件监听
   onUnload() {
-    event.remove('getCoupon', this.getCoupon)
+    this.removeEvent()
   },
-  // 领取优惠券，单独写一个函数便于移除事件监听
-  getCoupon(index) {
-    this.setData({
-      [`coupons[${index}].isReceived`]: true
-    })
-    // 领取的优惠券同步到全局数据
-    let coupon = this.data.coupons[index]
-    if (globalData.coupons.indexOf(coupon) < 0) {
-      globalData.coupons.push(coupon)
-    }
-  },
+
+  // 事件处理
   // 点击优惠券触发
   couponTapHandler(e) {
     let id = e.currentTarget.dataset.id
     let index = e.currentTarget.dataset.index
+    let coupon = this.data.coupons[index]
     if (id === undefined || index === undefined) return
-    if (this.data.coupons[index].isReceived) return
+    if (coupon.isReceived) return
     // 缓存优惠券领取状态
     dataService.setStorage('coupon' + id, '1').then(() => {
+      app.addCoupon(coupon)
       event.emit('getCoupon', index)
       // 提示信息
       wx.showToast({
@@ -67,6 +61,23 @@ Page({
         icon: 'success',
         mask: true,
       })
+    })
+  },
+
+  // 初始化事件监听，在onLoad中调用
+  initEvent() {
+    event.on('getCoupon', this.getCoupon, this)
+  },
+  // 移除事件监听, 在onUnload中调用
+  removeEvent() {
+    event.remove('getCoupon', this.getCoupon)
+  },
+
+  // 自定义事件处理
+  // 领取优惠券，单独写一个函数便于移除事件监听
+  getCoupon(index) {
+    this.setData({
+      [`coupons[${index}].isReceived`]: true
     })
   }
 })

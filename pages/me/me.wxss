@@ -5,7 +5,7 @@
   width: 60px;
   height: 60px;
   border-radius: 30px;
-  margin: 15px 40rpx 15px 50rpx;
+  margin: 20px 40rpx 15px 50rpx;
 }
 
 .user-info {
@@ -16,17 +16,13 @@
   font-size: 20px;
   float: left;
   color: #fff;
-  margin-top: 30px;
-}
-
-.me-content {
-  background-color: #eee;
+  margin-top: 36px;
 }
 
 .me-item {
   background-color: #fff;
-  border-bottom: 1rpx solid #888;
-  padding: 0 25rpx;
+  border-bottom: 1rpx solid #eee;
+  padding: 8px 25rpx;
   height: 30px;
   font-size: 14px;
   line-height: 14px;
@@ -48,4 +44,8 @@
   height: 14px;
   margin: 8px 8rpx;
   color: #e64340;
+}
+
+.item-orders, .item-coupons {
+  margin-top: 15px;
 }

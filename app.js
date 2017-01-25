@@ -28,6 +28,7 @@ App({
       })
     }
   },
+  // 全局数据，类似于单一状态树store
   globalData: {
     // 用户信息
     userInfo: null,
@@ -41,5 +42,14 @@ App({
     afterSale: [],
     // 优惠券信息
     coupons: [],
+  },
+
+  // mutations: 
+  // 添加优惠券
+  addCoupon(coupon) {
+    if (this.globalData.coupons.indexOf(coupon) < 0) {
+      this.globalData.coupons.push(coupon)
+    }
+    console.log(this.globalData.coupons)
   }
 })

@@ -5,7 +5,7 @@
   <text class="name">{{userInfo.nickName}}</text>
 </view>
 <view class="g-wrap">
-  <navigator class="clearfix me-item" wx:for="{{itemList}}" url="{{item.url}}">
+  <navigator wx:for="{{itemList}}" url="{{item.url}}" class="clearfix me-item {{'item-'+item.name}}">
     <image class="f-fl" src="{{item.icon}}"></image>
     <text class="me-item-title f-fl">{{item.title}}</text>
     <image class="f-fr" src="/images/more.png"></image>

@@ -11,7 +11,7 @@
     </block>
   </swiper>
   <view class="search-wrap g-wrap">
-    <navigator class="search content-wrap" url="url">
+    <navigator class="search content-wrap" url="/pages/search/search">
       <icon type="search" size="20"></icon>
       <text>搜索商品</text>
     </navigator>

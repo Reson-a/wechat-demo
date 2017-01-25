@@ -1,0 +1,11 @@
+<view class="search-ipt">
+  <input placeholder="搜索商品" focus />
+  <button bindtap="cancelBtnTapHandler">取消</button>
+</view>
+<view class="hot-title">
+  <text class="hot-search">热门搜索</text>
+  <text class="hot-replace">换一批</text>
+</view>
+<view class="hot-tag">
+  <text wx:for="{{['小米','中米','大米']}}">{{item}}</text>
+</view>
