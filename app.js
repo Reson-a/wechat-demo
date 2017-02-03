@@ -50,6 +50,5 @@ App({
     if (this.globalData.coupons.indexOf(coupon) < 0) {
       this.globalData.coupons.push(coupon)
     }
-    console.log(this.globalData.coupons)
   }
 })

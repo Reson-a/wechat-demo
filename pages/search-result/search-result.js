@@ -20,10 +20,12 @@ Page({
         })
         // 获取搜索地址列表
         dataService.getStorage('search-history').then((res) => {
-            this.setData({
-                searchHistory: JSON.parse(res.data)
-            })
-        }).catch((err) => { console.log(err) })
+            if (res.data) {
+                this.setData({
+                    searchHistory: JSON.parse(res.data)
+                })
+            }
+        }).catch((err) => { })
 
         this.initEvent()
     },

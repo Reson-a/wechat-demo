@@ -53,6 +53,7 @@ Page({
     if (coupon.isReceived) return
     // 缓存优惠券领取状态
     dataService.setStorage('coupon' + id, '1').then(() => {
+      // 同步到全局数据，然后发布事件
       app.addCoupon(coupon)
       event.emit('getCoupon', index)
       // 提示信息

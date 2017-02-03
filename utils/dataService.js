@@ -59,6 +59,25 @@ function getCouponList() {
     }
 }
 
+//获取热门搜索标签
+function getHotTagList() {
+    if (DEBUG) {
+        let Random = Mock.Random
+        let data = [
+            ['华为', '魅族', '小米', 'vivo', 'oppo'
+                , '三星', '诺基亚'],
+            ['联想', '戴尔', '苹果', '雷神', '苹果'
+                , '宏碁', '外星人'],
+            ['娃哈哈', '乐百氏', '汇源', '康帅博', '怡宝'
+                , '王老吉', '农夫山泉']
+        ]
+        let res = { body: data[Random.increment() - 1] }
+        return new Promise((resolve, reject) => {
+            resolve(res)
+        })
+    }
+}
+
 // 微信相关api
 // 登录
 function login() {
@@ -98,6 +117,7 @@ function getLocation(type) {
 module.exports = {
     getSwiperUrlList,
     getCouponList,
+    getHotTagList,
     //微信相关
     login,
     getUserInfo,

@@ -9,7 +9,7 @@
   <text class="history-clear f-fr " bindtap="historyClearTapHandler">清除</text>
 </view>
 <view class="history-tag clearfix">
-  <navigator wx:for="{{searchHistory}}" url="{{'/pages/search-result/search-result?value='+item}}">
+  <navigator wx:for="{{searchHistory}}" url="{{'searchResult?value='+item}}">
     <text class="f-fl">{{item}}</text>
   </navigator>
 </view>
@@ -18,7 +18,7 @@
   <text class="hot-replace f-fr " bindtap="hotReplaceTapHandler">换一批</text>
 </view>
 <view class="hot-tag clearfix">
-  <navigator wx:for="{{hotTags}}" url="{{'/pages/search-result/search-result?value='+item}}">
+  <navigator wx:for="{{hotTags}}" url="{{'searchResult?value='+item}}">
     <text class="f-fl">{{item}}</text>
   </navigator>
 </view>
