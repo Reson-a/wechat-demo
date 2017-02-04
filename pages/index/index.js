@@ -56,8 +56,7 @@ Page({
     if (coupon.isReceived) return
     // 缓存优惠券领取状态
     dataService.setStorage('coupon' + id, '1').then(() => {
-      // 同步到全局数据，然后发布事件
-      app.addCoupon(coupon)
+      // 发布事件
       event.emit('getCoupon', index)
       // 提示信息
       wx.showToast({
@@ -80,6 +79,8 @@ Page({
   // 自定义事件处理
   // 领取优惠券，单独写一个函数便于移除事件监听
   getCoupon(index) {
+    // 同步到全局数据
+    app.addCoupon(this.data.coupons[index])
     this.setData({
       [`coupons[${index}].isReceived`]: true
     })
