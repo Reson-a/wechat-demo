@@ -1,5 +1,5 @@
 // dataService.js
-// RESTFULAPI相关全部放在此处
+// 异步交互API相关全部放在此处
 
 const Mock = require('./mock-min.js')
 const Promise = require('./bluebird.core.min.js')
@@ -59,7 +59,7 @@ function getCouponList() {
     }
 }
 
-//获取热门搜索标签
+//获取热门搜索标签(直接返回mock数据)
 function getHotTagList() {
     if (DEBUG) {
         let Random = Mock.Random
@@ -71,7 +71,31 @@ function getHotTagList() {
             ['娃哈哈', '乐百氏', '汇源', '康帅博', '怡宝'
                 , '王老吉', '农夫山泉']
         ]
-        let res = { body: data[Random.increment() - 1] }
+        let index = Random.increment()
+        let res = { body: data[index % 3] }
+        return new Promise((resolve, reject) => {
+            resolve(res)
+        })
+    }
+}
+
+// 获取商品,列表 (直接返回mock数据)
+function getGoodsList(params) {
+    if (DEBUG) {
+        let Random = Mock.Random
+        let res = Mock.mock({
+            "body|5-10": [
+                {
+                    id: Random.increment(),
+                    url: '',
+                    thumbUrl: 'http://tb2.bdstatic.com/tb/editor/images/face/i_f25.png?t=20140803',
+                    title: `走过路过不要错过，${params.search}专卖买不了吃亏，买不了上当，买不了吃亏，买不了上当，买不了吃亏，买不了上当`,
+                    "price|1": [88, 888, 8888, 88888],
+                    "comments|1": [41764, 34342, 23535, 65956, 2445],
+                    "favorPercent|1": [68, 89, 92, 98]
+                }
+            ]
+        })
         return new Promise((resolve, reject) => {
             resolve(res)
         })
@@ -118,6 +142,7 @@ module.exports = {
     getSwiperUrlList,
     getCouponList,
     getHotTagList,
+    getGoodsList,
     //微信相关
     login,
     getUserInfo,

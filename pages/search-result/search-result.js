@@ -7,25 +7,19 @@ const globalData = app.globalData
 Page({
     data: {
         searchIptValue: '',
-        searchHistory: [],
-        hotTags: []
+        selectedIndex: 0,
+        goods: [],
+        sort: '',
+        price: 0,// 默认为降序,1为升序
+        filter: ''
     },
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
-        // 获取热门搜索标签列表
-        dataService.getHotTagList().then((res) => {
-            this.setData({
-                hotTags: res.body
-            })
+        this.setData({
+            searchIptValue: options.search
         })
-        // 获取搜索地址列表
-        dataService.getStorage('search-history').then((res) => {
-            if (res.data) {
-                this.setData({
-                    searchHistory: JSON.parse(res.data)
-                })
-            }
-        }).catch((err) => { })
+        // 获取商品列表
+        this.search(options)
 
         this.initEvent()
     },
@@ -64,32 +58,71 @@ Page({
     },
     // 搜索
     searchBtnTapHandler() {
-        let value = this.data.searchIptValue
-        let history = this.data.searchHistory
-        wx.navigateTo({
-            url: `/pages/search-result/search-result?value=${value}`
-        })
-        if (history.indexOf(value) < 0) {
-            history.push(value)
-            this.setData({
-                searchHistory: history
-            })
-            dataService.setStorage('search-history', JSON.stringify(history))
-        }
+        event.emit('search')
     },
-    // 清除搜索历史
-    historyClearTapHandler() {
-        dataService.setStorage('search-history', '')
+    sortByComposite() {
         this.setData({
-            searchHistory: []
+            sort: 'composite',
+            selectedIndex: 0
         })
+        this.search();
     },
-    // 换一批热门搜索
-    hotReplaceTapHandler() {
-        dataService.getHotTagList().then((res) => {
-            this.setData({
-                hotTags: res.body
-            })
+    sortBySale() {
+        this.setData({
+            sort: 'sale',
+            selectedIndex: 1
         })
+        this.search();
+    },
+    sortByPrice() {
+        this.setData({
+            price: 1 - this.data.price,
+            selectedIndex: 2
+        })
+        this.search();
+    },
+    sortByFilter() {
+        this.setData({
+            filter: '',
+            selectedIndex: 3
+        })
+        // 待实现 
+    },
+    // 搜索商品
+    search() {
+        // 显示加载
+        wx.showToast({
+            title: '加载中',
+            icon: 'loading'
+        })
+
+        let params = {}
+        let $data = this.data
+        params.search = $data.searchIptValue
+        params.sort = $data.sort
+        params.price = $data.price
+        params.filter = $data.filter
+
+        // 获取商品
+        dataService.getGoodsList(params).then((res) => {
+            if (res.body) {
+                this.setData({
+                    goods: res.body
+                })
+                wx.hideToast()
+            }
+            else {
+                wx.showModal({
+                    title: '提示',
+                    content: '无搜索结果',
+                    showCancel: false,
+                    success: (res) => { }
+                })
+            }
+        })
+
+    },
+    customData: {
+
     }
 })

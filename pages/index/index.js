@@ -19,22 +19,25 @@ Page({
       })
     })
     // 获取优惠券列表
-    dataService.getCouponList().then((res) => {
-      // 发布事件更新全局数据
-      this.setData({
-        'coupons': res.body
+    dataService.getCouponList()
+      .then((res) => {
+        // 发布事件更新全局数据
+        this.setData({
+          'coupons': res.body
+        })
       })
-    })
-    // 更新优惠券显示状态
-    for (let i = 0, l = this.data.coupons.length; i < l; i++) {
-      let id = this.data.coupons[i].id
-      // 读取优惠券领取状态缓存
-      dataService.getStorage('coupon' + id).then((res) => {
-        if (res.data) {
-          event.emit('getCoupon', i)
+      .then(() => {
+        // 更新优惠券显示状态
+        for (let i = 0, l = this.data.coupons.length; i < l; i++) {
+          let id = this.data.coupons[i].id
+          // 读取优惠券领取状态缓存
+          dataService.getStorage('coupon' + id).then((res) => {
+            if (res.data) {
+              event.emit('getCoupon', i)
+            }
+          })
         }
       })
-    }
 
     this.initEvent()
   },
@@ -71,7 +74,7 @@ Page({
   },
   // 移除事件监听, 在onUnload中调用
   removeEvent() {
-    event.remove('getCoupon', this.getCoupon)
+    event.off('getCoupon', this.getCoupon)
   },
 
   // 自定义事件处理

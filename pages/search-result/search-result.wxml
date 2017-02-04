@@ -4,21 +4,21 @@
   <button class="f-fr cancel-btn" bindtap="cancelBtnTapHandler" wx:if="{{!searchIptValue}}">取消</button>
   <button class="f-fr search-btn" bindtap="searchBtnTapHandler" wx:if="{{searchIptValue}}">搜索</button>
 </view>
-<view class=" history clearfix">
-  <text class="history-search f-fl ">历史搜索</text>
-  <text class="history-clear f-fr " bindtap="historyClearTapHandler">清除</text>
+<view class="result-title clearfix">
+  <text class="composite {{selectedIndex===0?'z-active':''}}" bindtap="sortByComposite">综合</text>
+  <text class="sale  {{selectedIndex===1?'z-active':''}}" bindtap="sortBySale">销量</text>
+  <text class="price {{selectedIndex===2?'z-active':''}}" bindtap="sortByPrice">价格</text>
+  <text class="filter {{selectedIndex===3?'z-active':''}}" bindtap="sortByFilter">筛选</text>
 </view>
-<view class="history-tag clearfix">
-  <navigator wx:for="{{searchHistory}}" url="{{'searchResult?value='+item}}">
-    <text class="f-fl">{{item}}</text>
+<scroll-view scroll-y class="goods clearfix">
+  <navigator wx:for="{{goods}}" url="">
+    <view class="good clearfix">
+      <image class="f-fl" src="{{item.thumbUrl}}"></image>
+      <view class="good-detail f-fr">
+        <text class="good-title">{{item.title}}</text>
+        <text class="good-price">¥ {{item.price}}</text>
+        <text class="good-comments">{{item.comments}}条评价 {{item.favorPercent}}%好评</text>
+      </view>
+    </view>
   </navigator>
-</view>
-<view class="hot clearfix">
-  <text class="hot-search f-fl ">热门搜索</text>
-  <text class="hot-replace f-fr " bindtap="hotReplaceTapHandler">换一批</text>
-</view>
-<view class="hot-tag clearfix">
-  <navigator wx:for="{{hotTags}}" url="{{'searchResult?value='+item}}">
-    <text class="f-fl">{{item}}</text>
-  </navigator>
-</view>
+</scroll-view>

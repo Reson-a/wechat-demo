@@ -76,7 +76,7 @@ Page({
   },
   // 移除事件监听, 在onUnload中调用
   removeEvent() {
-    event.remove('getCoupon', this.getCoupon)
+    event.off('getCoupon', this.getCoupon)
   },
 
   // 自定义事件处理

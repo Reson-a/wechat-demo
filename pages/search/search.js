@@ -14,6 +14,7 @@ Page({
         // 页面初始化 options为页面跳转所带来的参数
         // 获取热门搜索标签列表
         dataService.getHotTagList().then((res) => {
+            console.log(res)
             this.setData({
                 hotTags: res.body
             })
@@ -43,11 +44,11 @@ Page({
 
     // 初始化事件监听，在onLoad中调用
     initEvent() {
-
+        event.on('search', this.search, this)
     },
     // 移除事件监听, 在onUnload中调用
     removeEvent() {
-
+        event.off('search', this.search, this)
     },
 
     // 输入同步到到view中
@@ -62,18 +63,7 @@ Page({
     },
     // 搜索
     searchBtnTapHandler() {
-        let value = this.data.searchIptValue
-        let history = this.data.searchHistory
-        wx.navigateTo({
-            url: `/pages/search-result/search-result?value=${value}`
-        })
-        if (history.indexOf(value) < 0) {
-            history.push(value)
-            this.setData({
-                searchHistory: history
-            })
-            dataService.setStorage('search-history', JSON.stringify(history))
-        }
+        event.emit('search')
     },
     // 清除搜索历史
     historyClearTapHandler() {
@@ -89,5 +79,19 @@ Page({
                 hotTags: res.body
             })
         })
+    },
+    search() {
+        let value = this.data.searchIptValue
+        let history = this.data.searchHistory
+        wx.navigateTo({
+            url: `/pages/search-result/search-result?search=${value}`
+        })
+        if (history.indexOf(value) < 0) {
+            history.push(value)
+            this.setData({
+                searchHistory: history
+            })
+            dataService.setStorage('search-history', JSON.stringify(history))
+        }
     }
 })
