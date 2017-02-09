@@ -35,7 +35,7 @@ Page({
             if (res.data) {
               event.emit('getCoupon', i)
             }
-          })
+          }).catch((err) => { console.log(err) })
         }
       })
 
